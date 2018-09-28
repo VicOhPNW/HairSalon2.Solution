@@ -6,15 +6,20 @@
 <div class="container">
   <h1>Stylist: @Model["selectedStylist"].GetStylistName()</h1>
   <hr/>
-  <h3>Here are all the clients for this stylist:</h3>
+  @if (Model["stylistClients"].Count == 0)
+  {
+    <h3>No clients have been added. Please add a client.</h3>
+  }
 
+  <h3>Here are all the clients for this stylist:</h3>
   <ol>
     @foreach (Client client in Model["stylistClients"])
     {
       <li>@client.GetClientName()</li>
     }
   </ol>
-
+  <br>
+  <hr/>
   <p><a href='/stylists'>Return to Stylists List</a></p>
   <p><a href='/'>Return to Main Page</a></p>
 </div>

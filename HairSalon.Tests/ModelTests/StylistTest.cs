@@ -52,10 +52,10 @@ namespace HairSalon.Test
       }
 
       [TestMethod]
-       public void GetAll_StylistsEmptyAtFirst_0()
+       public void GetAllStylists_StylistsEmptyAtFirst_0()
        {
          //Arrange, Act
-         int result = Stylist.GetAll().Count;
+         int result = Stylist.GetAllStylists().Count;
 
          //Assert
          Assert.AreEqual(0, result);
@@ -69,7 +69,7 @@ namespace HairSalon.Test
         testStylist.Save();
 
         //Act
-        List<Stylist> result = Stylist.GetAll();
+        List<Stylist> result = Stylist.GetAllStylists();
         List<Stylist> testList = new List<Stylist>{testStylist};
 
         //Assert
@@ -84,7 +84,7 @@ namespace HairSalon.Test
        testStylist.Save();
 
        //Act
-       Stylist savedStylist = Stylist.GetAll()[0];
+       Stylist savedStylist = Stylist.GetAllStylists()[0];
 
        int result = savedStylist.GetId();
        int testId = testStylist.GetId();

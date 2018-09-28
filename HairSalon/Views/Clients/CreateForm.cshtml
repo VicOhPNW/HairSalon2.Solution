@@ -1,4 +1,3 @@
-@using HairSalon.Models;
 @{
   Layout = "_Layout";
 }
@@ -6,18 +5,11 @@
 <div class="container">
   <h1>Add a Client</h1>
   <hr/>
-  <form action="/stylist/{id}" method="post">
+  <form action="/clients" method="post">
+    <input id="stylistId" name="stylistId" type='hidden' value='@Model.GetId()'
     <label for="clientName">Client's name</label>
     <input id="clientName" name="clientName" type="text">
     <br>
-    <br>
-
-    <label for="stylistName">Select Stylist</label>
-    <select name="stylistName">
-        @foreach(Stylist stylist in Stylist.GetAll())
-        {
-            <option value="@stylist.GetId()">@stylist.GetStylistName()</option>
-        }
     </select>
     <button type="submit">Add Client</button>
   </form>

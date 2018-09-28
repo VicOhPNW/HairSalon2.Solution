@@ -9,6 +9,7 @@ namespace HairSalon.Models
     private int _id;
     private string _stylistName;
 
+
     public Stylist(string stylistName, int id = 0)
     {
       _stylistName = stylistName;
@@ -43,7 +44,7 @@ namespace HairSalon.Models
         return this.GetId().GetHashCode();
     }
 
-    public static List<Stylist> GetAll()
+    public static List<Stylist> GetAllStylists()
     {
         List<Stylist> allStylists = new List<Stylist>{};
         MySqlConnection conn = DB.Connection();
@@ -136,12 +137,16 @@ namespace HairSalon.Models
 
 
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
+      int id = 0;
+      string clientName = "";
+      int clientStylistId = 0;
+
       while(rdr.Read())
       {
-        int clientId = rdr.GetInt32(0);
-        string clientName = rdr.GetString(1);
-        int clientStylistId = rdr.GetInt32(2);
-        Client newClient = new Client(clientName, clientStylistId, clientId);
+        id = rdr.GetInt32(0);
+        clientName = rdr.GetString(1);
+        clientStylistId = rdr.GetInt32(2);
+        Client newClient = new Client(clientName, clientStylistId, id);
         allStylistClients.Add(newClient);
       }
       conn.Close();
