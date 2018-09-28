@@ -2,14 +2,18 @@
   Layout = "_Layout";
 }
 
-<h3>Here are all the clients for this stylist:</h3>
+<div class="container">
+  <h1>Stylist: @Model["selectedStylist"].GetStylistName()</h1>
+  <hr/>
+  <h3>Here are all the clients for this stylist:</h3>
 
-<ol>
-  @foreach (var client in @Model["clients"])
-  {
-    <li><a href='/stylists/@Model["stylist"].GetId()/client/@client.GetId()'>@client.GetDescription()</a></li>
-  }
-</ol>
+  <ol>
+    @foreach (var client in @Model["stylistClients"])
+    {
+      <li>@Model["stylistClients"].GetClientName</li>
+    }
+  </ol>
 
-<p><a href='/stylists'>Return to stylists list</a></p>
-<p><a href='/'>Return to Main Page</a></p>
+  <p><a href='/stylists'>Return to Stylists List</a></p>
+  <p><a href='/'>Return to Main Page</a></p>
+</div>

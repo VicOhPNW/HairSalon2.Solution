@@ -2,19 +2,21 @@
   Layout = "_Layout";
 }
 
-<h1>Clients</h1>
+<div class="container">
+  <h1>Clients</h1>
 
-@if (@Model.Count == 0)
-{
-  <h3>No clients have been added</h3>
-}
-@foreach (var client in Model)
-{
-  <ul>
-    <li>@client.GetClientName()</li>
-  </ul>
-}
+  @if (@Model.Count == 0)
+  {
+    <h3>No clients have been added</h3>
+  }
+  @foreach (var client in Model)
+  {
+    <ul>
+      <li>@client.GetClientName()</li>
+    </ul>
+  }
 
-<br>
-<p><a href="/clients/new">Add a Client</a></p>
-<p><a href="/">Back Home</a></p>
+  <br>
+  <p><a href="/clients/new">Add a Client</a></p>
+  <p><a href="/">Back Home</a></p>
+</div>
