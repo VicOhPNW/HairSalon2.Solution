@@ -1,3 +1,4 @@
+@using HairSalon.Models;
 @{
   Layout = "_Layout";
 }
@@ -8,9 +9,9 @@
   <h3>Here are all the clients for this stylist:</h3>
 
   <ol>
-    @foreach (var client in @Model["stylistClients"])
+    @foreach (Client client in Model["stylistClients"])
     {
-      <li>@Model["stylistClients"].GetClientName</li>
+      <li>@client.GetClientName()</li>
     }
   </ol>
 
