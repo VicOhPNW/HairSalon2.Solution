@@ -1,3 +1,4 @@
+@using HairSalon.Models;
 @{
   Layout = "_Layout";
 }
@@ -5,15 +6,22 @@
 <div class="container">
   <h1>Add a Client</h1>
   <hr/>
+  @if (@Stylist.GetAllStylists().Count == 0)
+    {
+      <h3>Please add at least one stylist before adding clients.</h3>
+    }
+
   <form action="/clients" method="post">
     <input id="stylistId" name="stylistId" type='hidden' value='@Model.GetId()'
     <label for="clientName">Client's name</label>
     <input id="clientName" name="clientName" type="text">
     <br>
     </select>
+    <br>
     <button type="submit">Add Client</button>
   </form>
-  <br>
+
+  <hr/>
   <p><a href="/">Back home</a></p>
   <p><a href="/stylists">Back to list of Stylists.</a></p>
   <p><a href="/clients">Back to list of Clients.</a></p>

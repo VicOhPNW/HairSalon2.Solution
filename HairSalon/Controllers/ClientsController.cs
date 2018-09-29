@@ -12,10 +12,11 @@ namespace HairSalon.Controllers
             return View(Client.GetAll());
         }
 
-        [HttpGet("/clients/new")]
-        public ActionResult CreateForm()
+        [HttpGet("/stylists/{id}/new")]
+        public ActionResult CreateForm(int id)
         {
-          return View();
+          Stylist foundStylist = Stylist.Find(id);
+          return View(foundStylist);
         }
 
         [HttpPost("/clients")]

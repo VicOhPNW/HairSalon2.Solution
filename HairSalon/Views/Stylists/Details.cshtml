@@ -7,19 +7,23 @@
   <h1>Stylist: @Model["selectedStylist"].GetStylistName()</h1>
   <hr/>
   @if (Model["stylistClients"].Count == 0)
-  {
-    <h3>No clients have been added. Please add a client.</h3>
-  }
-
-  <h3>Here are all the clients for this stylist:</h3>
-  <ol>
-    @foreach (Client client in Model["stylistClients"])
     {
-      <li>@client.GetClientName()</li>
+      <h3>No clients have been added.</h3>
     }
-  </ol>
+    else
+    {
+      <h3>Here are all the clients for this stylist:</h3>
+      <ol>
+        @foreach (var client in Model["stylistClients"])
+        {
+          <li>@client.GetClientName()</li>
+        }
+      </ol>
+    }
+
   <br>
   <hr/>
+  <p><a href = "/stylists/@Model["selectedStylist"].GetId()/new">Add a client</a></p>
   <p><a href='/stylists'>Return to Stylists List</a></p>
   <p><a href='/'>Return to Main Page</a></p>
 </div>

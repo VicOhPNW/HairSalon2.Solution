@@ -30,9 +30,10 @@ namespace HairSalon.Controllers
     [HttpGet("/stylist/{id}")]
     public ActionResult Details(int id)
     {
-      Dictionary<string, object> model = new Dictionary<string, object>();
       Stylist selectedStylist = Stylist.Find(id);
       List<Client> stylistClients = selectedStylist.GetClients();
+
+      Dictionary<string, object> model = new Dictionary<string, object>();
       model.Add("selectedStylist", selectedStylist);
       model.Add("stylistClients", stylistClients);
       return View(model);
