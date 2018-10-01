@@ -23,10 +23,10 @@ namespace HairSalon.Controllers
         [HttpGet("/clients/{id}")]
         public ActionResult Details(int id)
         {
-          Client foundClient = Client.Find(id);
-          
+          Client selectedClient = Client.Find(id);
+
           Dictionary<string, object> model = new Dictionary<string, object>();
-          model.Add("foundClient", foundClient);
+          model.Add("selectedClient", selectedClient);
           return View(model);
         }
 

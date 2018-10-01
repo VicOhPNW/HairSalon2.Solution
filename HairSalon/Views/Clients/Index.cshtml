@@ -12,7 +12,7 @@
   @foreach (var client in Model)
   {
     <ul>
-      <li>@client.GetClientName()</li>
+      <li><a href="/clients/@client.GetId()">@client.GetClientName()</a></li>
     </ul>
   }
 
