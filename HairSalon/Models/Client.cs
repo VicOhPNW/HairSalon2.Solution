@@ -68,7 +68,6 @@ namespace HairSalon.Models
       stylistId.Value = this._stylistId;
       cmd.Parameters.Add(stylistId);
 
-
       cmd.ExecuteNonQuery();
       _id = (int) cmd.LastInsertedId;
       conn.Close();

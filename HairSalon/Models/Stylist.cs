@@ -132,9 +132,8 @@ namespace HairSalon.Models
 
       MySqlParameter stylistId = new MySqlParameter();
       stylistId.ParameterName = "@stylistId";
-      stylistId.Value = this._id;
+      stylistId.Value = this.GetId();
       cmd.Parameters.Add(stylistId);
-
 
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
       int id = 0;

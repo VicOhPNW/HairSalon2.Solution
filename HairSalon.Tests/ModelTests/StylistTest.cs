@@ -127,10 +127,11 @@ namespace HairSalon.Test
        CollectionAssert.AreEqual(testClientList, resultClientList);
      }
 
-    public void Dispose()
-    {
+
+     public void Dispose()
+     {
       Stylist.DeleteAll();
-      // Item.DeleteAll();
+
     }
   }
 }

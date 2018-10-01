@@ -1,0 +1,15 @@
+@using HairSalon.Models;
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+  <h1>Client: @Model["selectedClient"].GetClietName()</h1>
+  <hr/>
+
+  <br>
+  <hr/>
+
+  <p><a href='/clients'>Return to client list</a></p>
+  <p><a href='/'>Return to Main Page</a></p>
+</div>

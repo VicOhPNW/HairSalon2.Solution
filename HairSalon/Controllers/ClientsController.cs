@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using HairSalon.Models;
+using System;
 
 namespace HairSalon.Controllers
 {
@@ -19,13 +20,15 @@ namespace HairSalon.Controllers
           return View(foundStylist);
         }
 
-        [HttpPost("/clients")]
-        public ActionResult Create(string clientName)
+        [HttpGet("/clients/{id}")]
+        public ActionResult Details(int id)
         {
-          Client newClient = new Client(clientName, (2));
-          newClient.Save();
-          List<Client> allClients = Client.GetAll();
-          return RedirectToAction("Index");
+          Client foundClient = Client.Find(id);
+          
+          Dictionary<string, object> model = new Dictionary<string, object>();
+          model.Add("foundClient", foundClient);
+          return View(model);
         }
+
     }
 }
