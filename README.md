@@ -19,18 +19,23 @@ This is an exercise to apply and test our understanding of C# unit week 3 lesson
 1. A salon employee is able to see a list of all stylists at the salon.
     * inputs: "Panatda", "John"
     * output: "Panatda, John" (in list format)
-
 2. A salon employee is able to select a stylist, see their details, and see a list of all clients that belong to that stylist.
-  * input: "Panatda"
-  * output: "Panatda" and her client list
-
+    * input: "Panatda"
+    * output: Selected stylist's details page - "Panatda" and her client list.
 3. A salon employee is able to add a new stylist to their employee list.
-  * input: "John"
-  * output: "Panatda, John"
-
+    * input: "John"
+    * output: "Panatda, John"
 4. A salon employee is able to add new clients to a specific stylist - a client cannot be added if no stylists have been added.
-  * input: "Victoria"
-  * output: if no stylist: false; if a stylist is chosen, "Victoria" will be visible on a stylist's client list (see spec 2).
+    * input: "Victoria"
+    * "Victoria" will be visible on a stylist's client list (see spec 2).
+5. An employee is able to view a list of all clients at the salon.
+    * input: "Victoria", "Charles"
+    * output: "Victoria, Charles" (in list format)
+6. An employee is able to select a client and see their details.
+    * input: "Victoria"
+    * output: Selected client's details page - "Victoria" (currently just client name).
+7. 
+
 
 
 ## *Known Bugs & Issues*
