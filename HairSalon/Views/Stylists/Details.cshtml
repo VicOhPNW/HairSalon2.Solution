@@ -13,16 +13,17 @@
         <li>@specialty.GetService()</li>
       </ul>
     }
-  <h4>Add speciality to this stylist:</h4>
-  <form action="/stylists/@Model["stylist"].GetId()/specialties/new" method="post">
+  <br>
+  <h4>Add another speciality for this stylist:</h4>
+  <form action="/stylists/@Model["selectedStylist"].GetId()/specialties/new" method="post">
     <label for="service">Select a service</label>
     <select id="service" name="service" type='text'>
       @foreach (var service in @Model["stylistSpecialties"])
       {
-        <option value="@specialty.GetId()">@specialty.GetService()</option>
+        <option value="@service.GetId()">@service.GetService()</option>
       }
     </select>
-    <button type="submit" class="btn btn-info">Add Stylist</button>
+    <button type="submit" class="btn btn-info">Add service</button>
   </form>
   <hr/>
   @if (Model["stylistClients"].Count == 0)
