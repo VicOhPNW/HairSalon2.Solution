@@ -4,11 +4,12 @@
 }
 
 <div class="container">
-  <h1>Add a Service Specialty</h1>
+  <h1>Add a Service</h1>
   <hr/>
   @if (@Specialty.GetAllSpecialties().Count == 0)
     {
-      <h3>Please add a service.</h3>
+      <h3>No services listed. Please add a service.</h3>
+      <br>
     }
 
   <form action="/specialties" method="post">

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using HairSalon.Models;
+using System;
 
 namespace HairSalon.Controllers
 {
@@ -36,6 +37,11 @@ namespace HairSalon.Controllers
       Dictionary<string, object> model = new Dictionary<string, object>();
       model.Add("selectedStylist", selectedStylist);
       model.Add("stylistClients", stylistClients);
+
+      List<Specialty> stylistSpecialties = selectedStylist.GetSpecialties();
+      List<Specialty> allSpecialties = Specialty.GetAllSpecialties();
+      model.Add("stylistSpecialties", stylistSpecialties);
+      model.Add("allSpecialties", allSpecialties);
       return View(model);
     }
 
@@ -69,18 +75,27 @@ namespace HairSalon.Controllers
     }
 
     [HttpGet("/stylists/{id}/update")]
-        public ActionResult EditStylist(int id)
-        {
-          Stylist selectedStylist = Stylist.Find(id);
-          return View(selectedStylist);
-        }
+    public ActionResult EditStylist(int id)
+    {
+      Stylist selectedStylist = Stylist.Find(id);
+      return View(selectedStylist);
+    }
 
       [HttpPost("/stylists/{id}/update")]
-        public ActionResult Update(string editName, int id)
-        {
-          Stylist selectedStylist = Stylist.Find(id);
-          selectedStylist.Edit(editName);
-          return RedirectToAction("Index");
-        }
+      public ActionResult Update(string editName, int id)
+      {
+        Stylist selectedStylist = Stylist.Find(id);
+        selectedStylist.Edit(editName);
+        return RedirectToAction("Index");
+      }
+
+      [HttpPost("/stylists/{stylistid}/specialties/new")]
+      public ActionResult AddSpecialty(int id)
+      {
+        Stylist stylist = Stylist.Find(id);
+        Specialty specialty = Specialty.Find(Int32.Parse(Request.Form["service"]));
+        stylist.AddSpecialty(specialty);
+        return RedirectToAction("Details");
+      }
   }
 }
