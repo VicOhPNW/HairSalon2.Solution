@@ -54,9 +54,9 @@ namespace HairSalon.Models
         var rdr = cmd.ExecuteReader() as MySqlDataReader;
         while(rdr.Read())
         {
-          int SpecialtyId = rdr.GetInt32(0);
-          string SpecialtyService = rdr.GetString(1);
-          Specialty newSpecialty = new Specialty(SpecialtyService, SpecialtyId);
+          int specialtyId = rdr.GetInt32(0);
+          string specialtyService = rdr.GetString(1);
+          Specialty newSpecialty = new Specialty(specialtyService, specialtyId);
           allSpecialties.Add(newSpecialty);
         }
 
@@ -103,16 +103,16 @@ namespace HairSalon.Models
         cmd.Parameters.Add(searchId);
 
         var rdr = cmd.ExecuteReader() as MySqlDataReader;
-        int SpecialtyId = 0;
-        string SpecialtyService = "";
+        int specialtyId = 0;
+        string specialtyService = "";
 
         while(rdr.Read())
         {
-          SpecialtyId = rdr.GetInt32(0);
-          SpecialtyService = rdr.GetString(1);
+          specialtyId = rdr.GetInt32(0);
+          specialtyService = rdr.GetString(1);
         }
 
-        Specialty newSpecialty = new Specialty(SpecialtyService, SpecialtyId);
+        Specialty newSpecialty = new Specialty(specialtyService, specialtyId);
         conn.Close();
         if (conn != null)
         {

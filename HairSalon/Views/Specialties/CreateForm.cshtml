@@ -1,0 +1,25 @@
+@using HairSalon.Models;
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+  <h1>Add a Service Specialty</h1>
+  <hr/>
+  @if (@Specialty.GetAllSpecialties().Count == 0)
+    {
+      <h3>Please add a service.</h3>
+    }
+
+  <form action="/specialties" method="post">
+    <label for="specialtyName">Service:</label>
+    <input id="specialtyName" name="specialtyName" type="text">
+    <br>
+    </select>
+    <br>
+    <button type="submit">Add Service</button>
+  </form>
+
+  <hr/>
+  <p><a href="/">Back home</a></p>
+</div>
