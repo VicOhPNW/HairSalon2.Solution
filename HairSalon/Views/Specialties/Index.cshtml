@@ -12,8 +12,8 @@
   @foreach (var specialty in Model)
   {
     <ul>
-      <li><a href="/specialty/@specialty.GetId()">@specialty.GetService()</a> |
-        <a href="/specialty/@specialty.GetId()/edit">edit</a> / <a href="/specialty/@specialty.GetId()/delete">delete</a>
+      <li><a href="/specialties/@specialty.GetId()">@specialty.GetService()</a> 
+        <!-- <a href="/specialty/@specialty.GetId()/edit">edit</a> / <a href="/specialty/@specialty.GetId()/delete">delete</a> -->
       </li>
     </ul>
   }

@@ -11,10 +11,20 @@
   {
     <h3>No services have been added</h3>
   }
+  else
+  {
+    <h3>Here are all the stylists that specialize in this service:</h3>
+    <ol>
+      @foreach (var stylist in Model["specialtyStylists"])
+      {
+        <li>@stylist.GetStylistName()</li>
+      }
+    </ol>
+  }
 
-  <h3>Add stylist to this speciality:</h3>
   <hr/>
-  <form action="/specialities/@Model["selectedSpecialty"].GetId()/stylists/new" method="post">
+  <h3>Add stylist to this speciality:</h3>
+  <form action="/specialties/@Model["selectedSpecialty"].GetId()/stylists/new" method="post">
   <label for="stylistId">Select a stylist</label>
   <select id="stylistId" name="stylistId" type='text'>
     @foreach (var stylist in @Model["allStylists"])
@@ -26,7 +36,7 @@
 </form>
 
   <br>
-  <p><a href="/specialties/delete">Delete all services</a></p>
   <hr/>
-  <p><a href="/">Back Home</a></p>
+  <p><a href="/specialties/">Back to list of services</a></p>
+  <p><a href="/">Main Page</a></p>
 </div>

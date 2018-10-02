@@ -48,7 +48,7 @@ namespace HairSalon.Controllers
       Specialty specialty = Specialty.Find(id);
       Stylist stylist =  Stylist.Find(Int32.Parse(Request.Form["stylistId"]));
       specialty.AddStylists(stylist);
-      return RedirectToAction("Index");
+      return RedirectToAction("Details");
     }
   }
 }
