@@ -6,15 +6,8 @@
 <div class="container">
   <h1>Client: @Model["selectedClient"].GetClientName()</h1>
   <hr/>
-  <ul>
-  @foreach (var stylist in Model["clientStylists"])
-  {
-    <li>@stylist.GetStylistName()</li>
-  }
-</ul>
 
 
-  <br>
   <hr/>
 
   <p><a href='/clients'>Return to client list</a></p>

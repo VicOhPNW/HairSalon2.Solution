@@ -44,5 +44,20 @@ namespace HairSalon.Controllers
           selectedClient.Delete();
           return RedirectToAction("Index");
         }
+
+        [HttpGet("/clients/{id}/update")]
+        public ActionResult EditClient(int id)
+        {
+          Client foundClient = Client.Find(id);
+          return View(foundClient);
+        }
+
+        [HttpPost("/clients/{id}/update")]
+        public ActionResult Update(string editName, int id)
+        {
+          Client selectedClient = Client.Find(id);
+          selectedClient.Edit(editName);
+          return RedirectToAction("Index");
+        }
     }
 }
