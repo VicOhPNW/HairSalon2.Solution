@@ -121,6 +121,64 @@ namespace HairSalon.Models
         return newSpecialty;
     }
 
+    public void AddStylists(Stylist newStylist)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO stylist_specialties (stylist_id, speciality_id) VALUES (@StylistId, @SpecialityId);";
+
+      MySqlParameter stylistId = new MySqlParameter();
+      stylistId.ParameterName = "@StylistId";
+      stylistId.Value = newStylist.GetId();
+      cmd.Parameters.Add(stylistId);
+
+      MySqlParameter specialityId = new MySqlParameter();
+      specialityId.ParameterName = "@SpecialityId";
+      specialityId.Value = _id;
+      cmd.Parameters.Add(specialityId);
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    public List<Stylist> GetStylists()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT stylists.* FROM specialties
+      JOIN stylists_specialties ON (specialties.id = stylists_specialties.specialty_id)
+      JOIN stylists ON (stylist_specialities.stylist_id = stylists.id)
+      WHERE specialities.id = @SpecialtyId;";
+
+      MySqlParameter SpecialtyId = new MySqlParameter();
+      SpecialtyId.ParameterName = "@SpecialtyId";
+      SpecialtyId.Value = _id;
+      cmd.Parameters.Add(SpecialtyId);
+
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      List<Stylist> allStylists = new List<Stylist>{};
+
+      while(rdr.Read())
+      {
+        int stylistId = rdr.GetInt32(0);
+        string stylistName = rdr.GetString(1);
+        Stylist newStylist = new Stylist(stylistName, stylistId);
+        allStylists.Add(newStylist);
+      }
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return allStylists;
+    }
+
     public void Delete()
     {
       MySqlConnection conn = DB.Connection();
